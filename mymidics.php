@@ -222,7 +222,7 @@ overflow: hidden; //超出隐藏
 				for ($i=0; $i < 4 ; $i++) {
 					//$MEDIC_TAG
 					$MYDICS[$MEDIC_TAG][$i]=$row[$i];
-					echo "<td class='wrap'>$row[$i]</td>";
+					//echo "<td class='wrap'>$row[$i]</td>";
 					if ($i%3==0 && $i!=0) {
 						$MEDIC_TAG++;
 					}
@@ -262,14 +262,18 @@ overflow: hidden; //超出隐藏
 				// }
 
 
-				if ($LASTED <= 0) {
-					echo "<script>alert('$row[0]已过期')</script>";
-					echo "<td class='wrap'>$LASTED 天(已过期)</td>";
-				}else if ($LASTED < 15) {
-					echo "<script>alert('$row[0]即将过期')</script>";
-					echo "<td class='wrap'>$LASTED 天(即将过期)</td>";
-				}else{
-					echo "<td class='wrap'>$LASTED 天</td>";
+				if($LASTED >= -15){
+					for ($i=0; $i < 4; $i++) {
+						echo "<td class='wrap'>$row[$i]</td>";
+					}
+					if ($LASTED <= 0) {
+						echo "<script>alert('$row[0]已过期')</script>";
+						echo "<td class='wrap'>$LASTED 天(已过期)</td>";
+					}else if ($LASTED < 15) {
+						echo "<script>alert('$row[0]即将过期')</script>";
+						echo "<td class='wrap'>$LASTED 天(即将过期)</td>";
+					}else
+						echo "<td class='wrap'>$LASTED 天</td>";
 				}
 
 
